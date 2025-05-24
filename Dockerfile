@@ -25,8 +25,8 @@ RUN rm /etc/nginx/conf.d/default.conf
 # 将项目中的配置文件复制到 Nginx 配置目录
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# 使用CMD启动Nginx，并让其在前台运行
-CMD ["nginx", "-g", "daemon off;"]
-
 # 从第一阶段复制构建好的文件到 Nginx 默认的静态文件目录
 COPY --from=builder /app/build /usr/share/nginx/html
+
+# 使用CMD启动Nginx，并让其在前台运行
+CMD ["nginx", "-g", "daemon off;"]
