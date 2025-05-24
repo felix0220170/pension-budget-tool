@@ -23,7 +23,7 @@ FROM nginx:latest
 RUN rm /etc/nginx/conf.d/default.conf
 
 # 将项目中的配置文件复制到 Nginx 配置目录
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # 从第一阶段复制构建好的文件到 Nginx 默认的静态文件目录
 COPY --from=builder /app/build /usr/share/nginx/html
