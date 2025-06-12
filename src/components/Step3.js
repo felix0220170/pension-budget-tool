@@ -109,7 +109,7 @@ const Step3 = ({ onPrev }) => {
         const expectedPension = basePension + personalPension;
         setExpectedPension(expectedPension);
 
-    }, []);
+    }, [contributionIndex]);
 
     return (
         <div style={{ margin: '20px' }}>
