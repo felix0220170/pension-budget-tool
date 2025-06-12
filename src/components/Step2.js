@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Form, InputNumber, Space, Button, message, Table, DatePicker, Divider } from 'antd';
 import { useContext } from 'react';
-import { ContributionIndexContext } from '../ContributionIndexContext';
 import dayjs from 'dayjs';
 import '@ant-design/v5-patch-for-react-19';
 
@@ -11,7 +10,6 @@ const DATE_FORMAT = 'YYYY-MM';
 
 const Step2 = ({ onPrev, onNext }) => {
     const [form] = Form.useForm();
-    const { contributionIndex } = useContext(ContributionIndexContext);
     const [paymentPlans, setPaymentPlans] = useState([]);
 
     // 从 localStorage 读取 Step1 的当前年龄
