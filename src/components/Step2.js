@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Form, InputNumber, Space, Button, message, Table, DatePicker, Divider } from 'antd';
-import { useContext } from 'react';
 import dayjs from 'dayjs';
 import '@ant-design/v5-patch-for-react-19';
 
@@ -143,12 +142,12 @@ const Step2 = ({ onPrev, onNext }) => {
         return Promise.resolve();
     };
 
-    const getDefaultStartDate = () => {
+    const getDefaultStartDate = useCallback(() => {
         if (paymentPlans.length === 0) {
             return dayjs();
         }
         return getNextMonthLastPlanEndDate(paymentPlans);
-    };
+    }, [paymentPlans]);
 
     const getNextMonthLastPlanEndDate = (plans) => {
         const lastPlanEndDate = dayjs(plans[plans.length - 1].endDate, DATE_FORMAT);
@@ -188,7 +187,7 @@ const Step2 = ({ onPrev, onNext }) => {
         form.setFieldsValue({
             paymentPlanDateRange: [getDefaultStartDate(), getDefaultStartDate().add(1, 'month')]
         });
-    }, [form]);
+    }, [form, getDefaultStartDate]);
 
     return (
         <div style={{ margin: '20px' }}>
