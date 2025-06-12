@@ -24,11 +24,12 @@ const Step3 = ({ onPrev }) => {
         return endDate.diff(startDate, 'month') + 1;
     };
 
+    /*
     const getPlanYearsCount = (plan) => {
         const startDate = dayjs(plan.startDate, 'YYYY-MM');
         const endDate = dayjs(plan.endDate, 'YYYY-MM');
         return endDate.diff(startDate, 'year') + 1;
-    };
+    };*/
 
     useEffect(() => {
         const pensionData = JSON.parse(localStorage.getItem('pensionData'));
